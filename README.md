@@ -1,6 +1,6 @@
-# cctv
+# National news network
 
-> cctv
+> a news app, vue cordova demo
 
 ## Build Setup
 
