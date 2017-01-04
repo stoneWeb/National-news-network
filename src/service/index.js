@@ -123,9 +123,9 @@ util.getMedia = (opt) => {
   return new Promise((resolve, reject) => {
       opt = Object.assign(defaults, opt)
       navigator.camera.getPicture((uri) => {
-        if(device.platform === "Android" && !/^file/.test(fileUri)){
+        if(device.platform === "Android" && !/^file/.test(uri)){
           // Android is shit
-          fileUri = "file://"+fileUri
+          uri = "file://"+uri
         }
         resolve(uri)
       }, reject, opt);
