@@ -1,0 +1,414 @@
+@import 'ionicons.min.css'
+@import 'setting.styl'
+
+html
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch;
+  -webkit-backface-visibility: hidden;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  height: 100%;
+  font-size $root-font
+  overflow: hidden
+
+body, #content
+  overflow hidden
+  font-family 'HelveticaNeue', 'Helvetica Neue',Helvetica, Arial, sans-serif
+  color #333
+  font-size 1.4rem
+  display -webkit-box
+  background: #000;
+  margin: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-align:stretch;
+  -webkit-touch-callout: none;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  word-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  -webkit-backface-visibility: hidden;
+  -webkit-user-drag: none;
+  -ms-content-zooming: none;
+
+h1,h2,h3,h4,ul,p
+  margin: 0
+  font-weight normal
+
+ul
+  padding: 0
+
+li
+  list-style: none;
+
+a, button, :focus, a:focus, button:focus, a:active, a:hover
+  outline: 0;
+
+a
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  color inherit
+
+a:active
+  opacity .5
+
+img
+  max-width 100%
+
+input, button, textarea
+  border-radius 0
+  -webkit-appearance none
+
+*::-webkit-media-controls-panel {
+  display: none!important
+  -webkit-appearance: none
+}
+*::--webkit-media-controls-play-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+*::-webkit-media-controls-start-playback-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+*, *:before, *:after
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+.v
+  height 100%
+  background-color #fafafa
+.change-page
+  .v
+    position absolute
+    top 0
+    width 100%
+
+@-webkit-keyframes spinner
+  0%
+    -webkit-transform rotate(0deg)
+  50%
+    -webkit-transform rotate(180deg)
+  100%
+    -webkit-transform rotate(360deg)
+@keyframes spinner
+  0%
+    transform rotate(0deg)
+  50%
+    transform rotate(180deg)
+  100%
+    transform rotate(360deg)
+
+.loading
+  display inline-block
+  -webkit-animation spinner 1s infinite linear
+  animation spinner 1s infinite linear
+// 单场景切换
+/*场景切换*/
+.next-enter
+    z-index: 1002;
+    -webkit-animation: pageFromRightToCenter 500ms forwards;
+    animation: pageFromRightToCenter 500ms forward
+.next-leave
+    z-index: 1001;
+    -webkit-animation: pageFromCenterToLeft 500ms forwards;
+    animation: pageFromCenterToLeft 500ms forwards
+.prev-enter
+    z-index: 1001;
+    -webkit-animation: pageFromLeftToCenter 400ms forwards;
+    animation: pageFromLeftToCenter 400ms forward
+.prev-leave
+    z-index: 1002;
+    -webkit-animation: pageFromCenterToRight 400ms forwards;
+    animation: pageFromCenterToRight 400ms forwards;
+@-webkit-keyframes pageFromRightToCenter
+  from
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    opacity: .9;
+  to
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+@keyframes pageFromRightToCenter
+  from
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    opacity: .9;
+  to
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+@-webkit-keyframes pageFromCenterToRight
+  from
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  to
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    opacity: .9;
+@keyframes pageFromCenterToRight
+  from
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  to
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    opacity: .9;
+.page-from-center-to-left
+  -webkit-animation: pageFromCenterToLeft 400ms forwards;
+  animation: pageFromCenterToLeft 400ms forwards;
+.page-from-left-to-center
+  -webkit-animation: pageFromLeftToCenter 400ms forwards;
+  animation: pageFromLeftToCenter 400ms forwards;
+@-webkit-keyframes pageFromCenterToLeft
+  from
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  to
+    opacity: 0.5;
+    -webkit-transform: translate3d(-20%, 0, 0);
+    transform: translate3d(-20%, 0, 0);
+@keyframes pageFromCenterToLeft
+  from
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  to
+    opacity: 0.5;
+    -webkit-transform: translate3d(-20%, 0, 0);
+    transform: translate3d(-20%, 0, 0);
+@-webkit-keyframes pageFromLeftToCenter
+  from
+    opacity: .5;
+    -webkit-transform: translate3d(-20%, 0, 0);
+    transform: translate3d(-20%, 0, 0);
+  to
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+@keyframes pageFromLeftToCenter
+  from
+    opacity: .5;
+    -webkit-transform: translate3d(-20%, 0, 0);
+    transform: translate3d(-20%, 0, 0);
+  to
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
+
+.scroll-view
+  position absolute
+  left 0
+  right 0
+  bottom 0
+  top 0
+  overflow-x hidden
+  overflow-y scroll
+.hastop
+  top $head-height
+.submit-btn
+  line-height 42px
+  height 42px
+  border-radius 5px
+  background-color $red
+  color #fff
+  display block
+  text-align center
+  .loading
+    font-size 2em
+.loading-box
+  padding-top 12px
+  text-align center
+  font-size 3rem
+  opacity .6
+
+.infom_wrap
+  top 82px
+
+.submit-btn.short
+  margin 3.5rem 3rem
+.ios .hastop, .electron .hastop
+  top $ios-head-height
+.ios .infom_wrap, .electron .infom_wrap
+  top 102px
+.ios .header, .electron .header
+  height $ios-head-height
+  padding-top 20px
+.ios .user-head, .electron .user-head
+  padding-top 20px
+.ios .user-counter, .electron .user-counter
+  margin-top 10px
+.ios .main-head .main-head-bg, .electron .main-head .main-head-bg
+  padding-top 20px
+  height 180px
+.ios .main-content, .electron .main-content
+  top 120px
+.ios .status-bg, .electron .status-bg
+  display block
+.status-bg
+  display none
+  background -webkit-linear-gradient(-5deg, #dc301e, #d62217)
+  background: linear-gradient(-5deg, #dc301e, #d62217)
+  height 20px
+  position absolute
+  top 0
+  left 0
+  right 0
+  z-index 100
+.header
+  height $head-height
+  display -webkit-flex
+  display flex
+  align-items center
+  background -webkit-linear-gradient(-5deg, #ff7e4a, #d31b13)
+  background: linear-gradient(-5deg, #ff7e4a, #d31b13)
+.head-left, .head-right
+  width 50px
+  a
+    display block
+    line-height $head-height
+    font-size 3rem
+    text-align center
+    color #fff
+
+.head-title
+  flex 1
+  text-align center
+  line-height $head-height
+  color #fff
+  font-size 1.6rem
+.page-content
+  position absolute
+  top $head-height
+  left 0
+  right 0
+  bottom 0
+  overflow-x hidden
+  overflow-y scroll
+  background-color #fafafa
+.column.input-view
+  flex-direction column
+  align-items flex-start
+.column.input-view
+  span
+    width 100%
+    padding 3px 0 12px 0
+  input
+    width 100%
+.input-view
+  margin-top 20px
+  min-height 4rem
+  position relative
+  display -webkit-flex
+  display flex
+  align-items center
+  background-color #fff
+  padding 10px 15px
+  border-bottom 1px solid #d9d9d9
+  i
+    height 26px
+    width 26px
+    margin-right 15px
+    font-size 20px
+    line-height 24px
+    text-align center
+    border-radius 50%
+    color $red
+    border 1px solid $red
+  input
+    background none
+    border 0
+    flex 1
+    font-size 16px
+    height 100%
+.select-view
+  margin-right 10px
+  input
+    display none
+  b
+    display inline-block
+    vertical-align middle
+    border 1px solid $red
+    border-radius 50%
+    margin-right 5px
+    width 16px
+    height 16px
+    position relative
+.select-view b:after
+      content ""
+      width 10px
+      height 10px
+      display none
+      border-radius 50%
+      position absolute
+      left 2px
+      top 2px
+      background-color $red
+.select-view input:checked + b:after
+  display block
+.nomargin
+  margin 0
+
+.btn-toggle
+  width: 50px;
+  height: 28px;
+  display: inline-block;
+  input
+    display: none;
+  span
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 2px solid #e5e5e5;
+    background-color: rgba(43, 196, 36, 0);
+    border-radius: 28px;
+    transition: all 200ms;
+.btn-toggle span:after
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  box-shadow 1px 1px 3px rgba(0,0,0,.1)
+  left: 0;
+  top: 0;
+  position: absolute;
+  border-radius: 50%;
+  transition: all 200ms;
+
+.btn-toggle input:checked + span
+  border-color: #2BC424;
+  background-color: rgba(43, 196, 36, 1);
+
+.btn-toggle input:checked + span:after
+  background-color: #fff;
+  transform: translateX(22px);
+
+[v-cloak] {
+  display: none
+}
